@@ -1,0 +1,44 @@
+<%- include("partials/header") -%>
+<% if(lockers.length==0){ %>
+    <center>
+        <h1>No lockers are Available... Right now</h1>
+    </center>
+<% }else{ %>
+<div class="grid grid-rows gap-5">
+    
+    <%  lockers.forEach(function(locker){ %>
+
+    <div class="bg-gray-300 h-[20vh] mx-5 rounded-3xl p-5">
+        <div class="flex flex-cols gap-10">
+            <div>
+                <h1 class="text-xl  ">
+                    Location 
+                </h1>
+                <h1 class="">
+                    <%= locker.location %>
+                </h1>
+                <h1 class="text-xl  ">
+                    Locker Code 
+                </h1>
+                <h1 class="">
+                    <%= locker.code %>
+                </h1>
+                
+            </div>
+            <div class="h-32 rounded-3xl w-36 p-5 bg-[#FABB18]">
+                <a href="/use_locker/<%=locker._id%>">
+                <button 
+                    class="flex flex-cols justify-center items-center h-full text-center" name="">
+                    Use it
+                </button>
+            </a>
+            </div>
+        </div>
+    </div>
+
+    <% }) %>
+   
+</div>
+
+<% } %>
+    <%- include('partials/footer') %>
